@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grade-submission-portal  # Deployment name
+  namespace: grade-submission    # Namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: grade-submission-portal
+  template:
+    metadata:
+      labels:  # Correct indentation
+        app.kubernetes.io/name: grade-submission
+        app.kubernetes.io/component: frontend
+        app.kubernetes.io/instance: grade-submission-portal
+    spec:
+      containers:
+        - name: grade-submission-portal
+          image: rslim087/kubernetes-course-grade-submission-portal
+          livenessProbe:  # Liveness probe to check health
+            httpGet:
+              path: /healthz
+              port: 5001
+            initialDelaySeconds: 15
+            periodSeconds: 5
+          readinessProbe:  # Readiness probe to check traffic readiness
+            httpGet:
+              path: /readyz
+              port: 5001
+          envFrom:
+            - configMapRef:
+                name: gs-poral-configmap
+          resources:
+            requests:  # Define resource requests
+              memory: "128Mi"
+              cpu: "200m"
+            limits:  # Define resource limits
+              memory: "128Mi"
+              cpu: "200m"  # Added missing CPU limit
+          ports:
+            - containerPort: 5001

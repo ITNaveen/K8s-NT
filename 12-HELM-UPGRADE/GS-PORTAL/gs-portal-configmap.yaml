@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gs-poral-configmap
+  namespace: grade-submission
+data:
+  GRADE_SERVICE_HOST: grade-submission-api

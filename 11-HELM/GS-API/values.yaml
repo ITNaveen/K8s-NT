@@ -1,0 +1,23 @@
+microservices: #gerneal service deatils
+  name: grade-submission-api
+  namespace: grade-submission
+  replicas: 2
+
+workload: #conatiner specific config
+  image: rslim087/kubernetes-course-grade-submission-api:stateless-v3
+  port: 3000
+  resources:    
+    memory: "128Mi"
+    cpu: "128m"
+  livenessDelay: 15
+
+env:
+  MONGODB_HOST: mongodb
+  MONGODB_PORT: '27017'
+
+secrets:
+  MONGODB_USER: "YWRtaW4="
+  MONGODB_PASSWORD: "cGFzc3dvcmQxMjM="
+
+
+

@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.microservices.name }}
+  namespace: {{ .Values.microservices.namespace }}
+spec:
+  replicas: {{ .Values.microservices.replicas }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: {{ .Values.microservices.name }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 50%
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: grade-submission
+        app.kubernetes.io/component: backend
+        app.kubernetes.io/instance: {{ .Values.microservices.name }}
+    spec:
+      containers:
+        - name: {{ .Values.microservices.name }}
+          image: {{ .Values.workload.image }}
+          livenessProbe:   #here i added liveness probe
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: {{ .Values.workload.livenessDelay }}
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: {{ .Values.workload.port  }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.microservices.name }}-secrets
+          resources:
+            requests:  # Corrected indentation for resources
+              memory: {{ .Values.workload.resources.memory }}
+              cpu: {{ .Values.workload.resources.cpu }}
+            limits:
+              memory: {{ .Values.workload.resources.memory }}
+          ports:
+            - containerPort: {{ .Values.workload.port  }}  # Properly nested under the container
