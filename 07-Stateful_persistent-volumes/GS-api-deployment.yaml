@@ -34,7 +34,7 @@ spec:
               port: 3000
           env:
             - name: MONGODB_HOST
-              value: mongodb
+              value: mongodb #my db service-name
             - name: MONGODB_PORT
               value: '27017'
             - name: MONGODB_USER

@@ -10,3 +10,9 @@ spec:
   - port: 5001
     targetPort: 5001
     nodePort: 32000
+
+#when we have lable and each pod has a label and with label we can group pods, so 1 specific label could have
+# 4 pods. now when we open pod to be acessesd from outside lets say using nodeport then from the range 30-32k, 
+# it picks port then that port redirect traffic to this spedific pod.
+#behind the scene kubeproxy get the request from nodeport then it checks the label and based on pods that are
+# maching with this label, kubeproxy redirect the traffic to this pod.

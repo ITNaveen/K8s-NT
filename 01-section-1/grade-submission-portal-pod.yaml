@@ -28,3 +28,7 @@ spec:
         memory: "128Mi"
   
 
+#this 5001 is open for pods within same cluster but i need to access this pod 
+#from outsode, so - kubectl port-forward pod_name external_port:pod_port
+
+#to delete this pod - kubectl delete pod -l "app.kubernetes.io/component: frontend"

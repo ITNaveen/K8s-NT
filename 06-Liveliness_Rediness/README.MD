@@ -18,3 +18,9 @@ redinessProbe:
   httpGet:
     path: /readyz
     port: 3000
+
+Aspect	         Liveness Probe	                                         Readiness Probe
+Purpose	         Checks if the Pod is alive and not stuck.	             Checks if the Pod is ready to serve traffic.
+Action            on Failure	Restarts the Pod.	                        Removes the Pod from the Service's endpoints.
+Pod State	       Pod is terminated and recreated if failed.	           Pod remains running but marked as "Not Ready".
+Use Case	       Detect unresponsive or stuck Pods.                   	Manage traffic routing during         Pod                                                                     initialization or recovery.
