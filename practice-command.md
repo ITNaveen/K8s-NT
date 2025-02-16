@@ -37,4 +37,12 @@ metadata.labels - "This is who I am" (the controller's own identity)
 spec.selector.matchLabels - "These are the pods I'm looking for" (finding pods)
 spec.template.metadata.labels - "This is how I'll label new pods I create" (labeling new pods)
 
- 
+# jobs - 
+Why the Name Appears Twice
+In Kubernetes YAML for a Job, the name appears in two different places because they refer to different resources:
+metadata.name: countdown-nautilus - This is the name of the Job resource itself
+spec.template.metadata.name: countdown-nautilus - This is the name of the Pod template that the Job will create
+
+Jobs are a Kubernetes resource type designed to run a task that should complete successfully and then terminate (unlike long-running services).
+The backoffLimit: 4 specifies that if the Job fails, Kubernetes will try to restart it up to 4 times before giving up.
+
