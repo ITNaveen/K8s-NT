@@ -11,7 +11,7 @@ grade-submission-api-86f6464d8b-xwk2p      1/1     Terminating   0          11m
 ROLLBACK - 
 Now if new image or deployment is not working then we can with the help of DEPLOYMENT CONTROLLER, come back to previous stage and so its called ROLLBACK.
 
-kubectl rollout undo deployment/grade-submission-api -n grade-submission 
+# kubectl rollout undo deployment/grade-submission-api -n grade-submission 
 write down the deployment name that needs to get undone and thats it, app is in previous stage.
 
 Strategy for ROLLING_UPDATE -
@@ -20,4 +20,8 @@ strategy:
       type: RollingUpdate
       rollingupdate:
         maxUnavailable: 50%
-        maxSurge: 1  ---- it says how many pods there can be for this deployment at anytime, this case it will be 3.
+        maxSurge: 1  ---- it means k8s can creates 1 extra pod for temp bascic.
+
+
+# it's spec.selector.matchLabels at the Deployment level and spec.template.metadata.labels at the Pod level.
+this strategy defined under deployment label.

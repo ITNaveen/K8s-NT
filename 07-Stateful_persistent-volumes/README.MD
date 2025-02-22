@@ -26,3 +26,29 @@ and for API to connect to this MONGODB, we need to add username and passord as e
       
 if pv or pvc creating issue while deleting then do this - 
 kubectl scale statefulset mongodb --replicas=0 -n grade-submission
+
+
+# Let's say you have:
+
+StatefulSet with 2 replicas: mongodb-0 and mongodb-1
+Each has its own PersistentVolume (PV) with data
+
+When mongodb-1 container terminates:
+
+What StatefulSet Does:
+
+
+Kubernetes creates a new pod with EXACTLY the same name (mongodb-1)
+This new pod automatically connects to the SAME PersistentVolume that the old mongodb-1 was using
+The pod restarts with all its previous data intact
+Network identity stays the same (mongodb-1.mongodb-service)
+
+
+MongoDB Behavior:
+
+
+Since it's the same storage, the new mongodb-1 pod can see all previous data
+It syncs up with mongodb-0 to catch up on any missed operations
+The database cluster stays healthy
+
+# persitent volume an persitent vol claim - 

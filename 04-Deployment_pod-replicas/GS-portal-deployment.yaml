@@ -29,3 +29,16 @@ spec:   #specs contains replicas, labels
               memory: "128Mi"
           ports:
             - containerPort: 5001
+
+
+
+# Selectors (spec.selector.matchLabels) → Deployment Level
+  Defined in the Deployment spec.
+  Determines which existing pods this deployment manages.
+  Deployment looks for pods with these labels—if they don’t exist, it creates new ones.
+
+# Labels in template.metadata.labels → Pod Level
+  Inside the template section (under spec.template).
+  Defines labels for the new pods created by this deployment.
+  Ensures the generated pods match the selector.
+

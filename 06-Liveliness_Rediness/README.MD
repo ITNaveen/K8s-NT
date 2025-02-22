@@ -24,3 +24,13 @@ Purpose	         Checks if the Pod is alive and not stuck.	             Checks i
 Action            on Failure	Restarts the Pod.	                        Removes the Pod from the Service's endpoints.
 Pod State	       Pod is terminated and recreated if failed.	           Pod remains running but marked as "Not Ready".
 Use Case	       Detect unresponsive or stuck Pods.                   	Manage traffic routing during         Pod                                                                     initialization or recovery.
+
+# livliness and rediness comes under container and under image.
+
+📌 What Happens When Probes Fail?
+Probe Type	What It Checks	What Happens If It Fails?
+Liveness Probe (livenessProbe)	Checks if the container is alive (not stuck or crashed).	🚨 Pod is terminated and restarted by Kubernetes.
+Readiness Probe (readinessProbe)	Checks if the app is ready to handle traffic.	🚧 Pod keeps running but is removed from the Service (it won’t get traffic).
+
+
+

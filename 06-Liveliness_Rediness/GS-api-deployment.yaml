@@ -41,3 +41,6 @@ spec:
               cpu: "500m"  # Added this as it is likely required
           ports:
             - containerPort: 3000  # Properly nested under the container
+
+
+

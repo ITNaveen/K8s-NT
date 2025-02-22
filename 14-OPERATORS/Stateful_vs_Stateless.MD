@@ -11,18 +11,18 @@ Stateful Components:
 └── File Storage (MongoDB)
 
 Here's a column-wise comparison of 10 major stateful and stateless services:
-Stateful ServicesStateless Services
+Stateful Services                                                Stateless Services
 
-Database Services (MySQL, MongoDB) | 1. Load Balancers (NGINX, HAProxy)
-User Authentication Systems | 2. Static Content Servers (CDN)
-Shopping Cart Services | 3. API Gateways
-Session Management | 4. Image Processing Services
-Email/Message Queues (Kafka, RabbitMQ) | 5. Log Processors
-Gaming Leaderboard Systems | 6. Data Validation Services
-Online Banking Systems | 7. Report Generators
-Social Media Feeds | 8. File Format Converters
-CRM Systems (Customer Data) | 9. Health Check Services
-Order Management Systems | 10. Analytics Processors
+Database Services (MySQL, MongoDB) |                             1. Load Balancers (NGINX, HAProxy)
+User Authentication Systems |                                    2. Static Content Servers (CDN)
+Shopping Cart Services |                                         3. API Gateways
+Session Management |                                             4. Image Processing Services
+Email/Message Queues (Kafka, RabbitMQ) |                         5. Log Processors
+Gaming Leaderboard Systems |                                     6. Data Validation Services
+Online Banking Systems |                                         7. Report Generators
+Social Media Feeds |                                             8. File Format Converters
+CRM Systems (Customer Data) |                                    9. Health Check Services
+Order Management Systems |                                       10. Analytics Processors
 
 Common Characteristics:
 Stateful:
