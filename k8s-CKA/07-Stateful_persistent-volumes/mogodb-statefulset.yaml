@@ -37,9 +37,6 @@ spec:
       resources:
         requests:
           storage: 1Gi
-
-
-
 # You're saying "replace MongoDB's default /data/db with our persistent storage". This is necessary because otherwise MongoDB would write to the container's temporary storage!
 # so pv is my EBS and PVC is these volumeclaims.
 
