@@ -12,7 +12,7 @@ spec:
     image: rslim087/kubernetes-course-grade-submission-portal
     env:
       - name: GRADE_SERVICE_HOST
-        value: grade-submission-api
+        value: grade-submission-api    # this is for api srv.
     resources:
       requests:
         memory: "128Mi"
